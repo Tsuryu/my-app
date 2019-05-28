@@ -1,5 +1,16 @@
 body{
-    background-color: #707170;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    color: #121212;
+    background: #707174;
+}
+
+.main {
+    width: 100%;
+    max-width: 980px;
+    margin: 20px auto 80px;
+    padding: 0 10px;
 }
