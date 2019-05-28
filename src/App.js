@@ -9,7 +9,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <section className="main">
-          <Headline header="POSTS" description="some random description to test Headline component"/>
+          <Headline header="Posts" description="some random description to test Headline component"/>
         </section>
       </div>
     );
