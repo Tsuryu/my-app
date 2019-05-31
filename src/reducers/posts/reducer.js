@@ -1,7 +1,7 @@
 import { types } from './../../actions/types';
  
 export default (state=[], action) => {
-    switch(action.types){
+    switch(action.type){
         case types.GET_POSTS:
             return action.payload;
         default:
