@@ -33,5 +33,20 @@ describe('App component', ()=> {
         const component = findComponentBy(wrapper, 'appComponent');
         expect(component.length).toBe(1);
     });
+
+    it('toogleBtnVisibility Method should update state', () => {
+        const classInstance = wrapper.instance();
+        classInstance.toogleBtnVisibility();
+        expect(classInstance.state.btnVisibility).toBe(false);
+    });
+
+
+    it('incrementPostQuantity Method should update post quantity', () => {
+        const classInstance = wrapper.instance();
+        let quantity = classInstance.incrementPostQuantity(5);
+        expect(quantity).toBe(5);
+        quantity = classInstance.incrementPostQuantity(3);
+        expect(quantity).toBe(8);
+    });
 });
 

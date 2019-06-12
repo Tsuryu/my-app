@@ -7,18 +7,47 @@ import {connect} from 'react-redux';
 import {fetchPosts} from './actions/index';
 import './app.scss';
 
+const initialstate = {
+  btnVisibility: true,
+  postQuantity: 0
+}
+
 class App extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      ...initialstate
+    }
     this.fetch = this.fetch.bind(this);
+    this.toogleBtnVisibility = this.toogleBtnVisibility.bind(this);
+  }
+
+  toogleBtnVisibility(){
+    this.setState({
+      ...this.state,
+      btnVisibility: !this.state.btnVisibility
+    });
+  }
+
+  incrementPostQuantity = (amount) =>{
+    let { postQuantity } = this.state;
+    postQuantity += amount;
+    this.setState({
+      ...this.state,
+      postQuantity: postQuantity
+    });
+
+    return postQuantity;
   }
 
   fetch(){
     this.props.fetchPosts();
+    this.toogleBtnVisibility();
   }
 
   render() {
     const { posts } = this.props;
+    const { btnVisibility } = this.state;
 
     const configButton = {
       text: 'Get posts',
@@ -30,7 +59,9 @@ class App extends Component {
         <Header />
         <section className="main">
           <Headline header="Posts" description="some random description to test Headline component"/>
-          <Button {...configButton} />
+          {btnVisibility &&
+            <Button {...configButton} />
+          }
           { posts.length > 0 &&
             posts.map((post, index) => {
               const {title, body:description } = post;
